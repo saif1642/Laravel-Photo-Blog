@@ -47,4 +47,9 @@ class AlbumsController extends Controller
 
          
     }
+
+    public function show($id){
+        $album = Album::with('photos')->find($id);
+        return view('albums.show')->with('album',$album);
+    }
 }
