@@ -1,46 +1,26 @@
 @extends('layouts.app')
 
 @section('content')
-
-   @if(count($albums)>0)
-      <?php
-         $colcount = count($albums);
-         $i = 1;
-      ?>
-      <div id="albums">
-          <div class="row text-center">
-            @foreach($albums as $album)
-                @if($i == $colcount)
-                   <div class="medium-4 columns end">
-                       <a href="/albums/{{$album->id}}">
-                       <img src="storage/Album_covers/{{$album->cover_image}}" alt="{{$album->name}}" class="thumbnail">
-                      </a>
-                      <br>
-                      <h4>{{$album->name}}</h4>
-                  
-                @else
-                    <div class="medium-4 columns">
-                        <a href="/albums/{{$album->id}}">
-                        <img src="storage/Album_covers/{{$album->cover_image}}" alt="{{$album->name}}" class="thumbnail">
-                       </a>
-                       <br>
-                       <h4>{{$album->name}}</h4>
-                @endif
-
-
-                @if($i%3 == 0)
-                </div></div><div class="row text-center">
-                @else
-                </div>
-                @endif
-                 <?php $i++; ?>
-                @endforeach
-
-          </div>
+  @if(count($albums) > 0)
+    <?php
+      $colcount = count($albums);
+  	  $i = 1;
+    ?>
+    <div id="albums">
+      <div class="row text-center">
+        @foreach($albums as $album)
+           <div class='medium-4 columns'>
+               <a href="/albums/{{$album->id}}">
+                  <img height="400px" width="400px" class="thumbnail" src="storage/Album_covers/{{$album->cover_img}}" alt="{{$album->name}}">
+                </a>
+               <br>
+               <h4>{{$album->name}}</h4>
+           </div>
+        @endforeach
       </div>
-   @else
-     <p>No Albums Found</p>
-   @endif
- 
-@endsection
+    </div>
+  @else
+    <p>No Albums To Display</p>
+  @endif
 
+@endsection
